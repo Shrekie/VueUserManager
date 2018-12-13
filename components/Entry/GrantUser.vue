@@ -23,6 +23,8 @@
 
 <script>
 
+import { APP_URL } from 'react-native-dotenv';
+
 export default {
 
   data () {
@@ -30,7 +32,7 @@ export default {
       requestResponse: "",
       username: "",
       password: "",
-      api: "http://laravelusermanager.test"
+      api: APP_URL
     }
   },
 
@@ -51,8 +53,8 @@ export default {
 
         body: JSON.stringify({
           grant_type : 'password',
-          client_id : '8',
-          client_secret : 'lPOtlpnZbkScDOcf2QOM8FFVQluQgUYIJihIOZIi',
+          client_id : '6',
+          client_secret : 'pnnW2jHwcoCFSm9IgDhXgtMeHlV2j9FceHfnE2q3',
           username : this.username,
           password : this.password,
           scope : ''

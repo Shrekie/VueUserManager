@@ -4,7 +4,7 @@
 
 <script>
 
-import Expo from "expo";
+import { APP_URL } from 'react-native-dotenv';
 
 import SelectAuth from "./components/Curtain/SelectAuth.vue";
 
@@ -20,14 +20,7 @@ export default {
 
   mounted: () => {
 
-    // Am i alive
-    const { manifest } = Expo.Constants;
-    const hostIp = (typeof manifest.packagerOpts === `object`) && manifest.packagerOpts.dev
-    ? manifest.debuggerHost.split(`:`).shift().concat(`:8000`)
-    : `api.example.com`;
-
-    const api = "http://laravelusermanager.test";
-    fetch(api+'/api/test').catch(error => {
+    fetch(APP_URL+'/api/test').catch(error => {
       console.log(error);
     }).then(result => {
       result.json().then(jsonres => {
@@ -38,8 +31,10 @@ export default {
   }
 
 }
+
 </script>
  
 <style>
 
 </style>
+

@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "expo": "^29.0.0",
+    "native-base": "^2.8.1",
     "react": "16.5.0",
     "react-native": "0.55.4",
+    "react-native-dotenv": "^0.2.0",
     "vue-native-core": "0.0.8",
     "vue-native-helper": "0.0.9",
     "vue-native-router": "^0.0.1-alpha.3"

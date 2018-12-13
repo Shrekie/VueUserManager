@@ -33,6 +33,8 @@
 
 <script>
 
+import { APP_URL } from 'react-native-dotenv';
+
 export default {
 
   data () {
@@ -42,7 +44,7 @@ export default {
       password: "",
       passwordConfirmation: "",
       email: "",
-      api: "http://laravelusermanager.test"
+      api: APP_URL
     }
   },
 
@@ -73,14 +75,7 @@ export default {
 
         response.json().then(jsonresponse => {
 
-          console.log(jsonresponse);
-          console.log(jsonresponse.message);
-
-          // TODO: Get token
-          if(jsonresponse.message != "Unauthenticated.")
-            this.requestResponse = JSON.stringify(jsonresponse);
-          else
-            this.requestResponse = "Success";
+          this.requestResponse = JSON.stringify(jsonresponse);
 
         });
 
