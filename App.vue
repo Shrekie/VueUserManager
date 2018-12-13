@@ -6,7 +6,7 @@
 
 import { APP_URL } from 'react-native-dotenv';
 
-import SelectAuth from "./components/Curtain/SelectAuth.vue";
+import SelectAuth from "./src/components/Curtain/SelectAuth.vue";
 
 export default {
 

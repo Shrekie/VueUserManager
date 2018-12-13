@@ -24,7 +24,7 @@
     <text>Confirm Password</text>
     <text-input
     :style="{height: 40, borderColor: 'gray', borderWidth: 1}"
-    v-model="passwordConfirmation"/>
+    v-model="password_confirmation"/>
 
     <text>{{requestResponse}}</text>
 
@@ -33,18 +33,17 @@
 
 <script>
 
-import { APP_URL } from 'react-native-dotenv';
+import SessionBinder from '../../modules/Password/SessionBinder.js'
 
 export default {
 
   data () {
     return {
       requestResponse: "",
-      name: "",
-      password: "",
-      passwordConfirmation: "",
-      email: "",
-      api: APP_URL
+      name: "test",
+      password: "test",
+      password_confirmation: "test",
+      email: "test@test.com"
     }
   },
 
@@ -52,32 +51,14 @@ export default {
 
     registerUser () {
 
-      console.log(this.username);
+      console.log(this.email);
       console.log(this.password);
+      console.log(this.password_confirmation);
 
-      fetch(this.api+'/api/register', {
+      SessionBinder.chainUser(this.name, this.email, 
+      this.password, this.password_confirmation).then(response => {
 
-        method: 'POST',
-        headers: {
-        Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify({
-          name : this.name,
-          email : this.email,
-          password : this.password,
-          password_confirmation: this.passwordConfirmation,
-          scope : ''
-        }),
-
-      }).then(response => {
-
-        response.json().then(jsonresponse => {
-
-          this.requestResponse = JSON.stringify(jsonresponse);
-
-        });
+        this.requestResponse = JSON.stringify(response);
 
       });
 
